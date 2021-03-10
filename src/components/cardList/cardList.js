@@ -6,8 +6,12 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexWrap: "wrap",
     padding: "20px",
-    height: "100%",
-    margin: "65px 0"
+    maxHeight: "100%",
+    overflow: "auto",
+    marginRight: "250px",
+    position: "absolute",
+    top: "65px",
+    bottom: "65px"
   }
 }));
 
@@ -17,7 +21,7 @@ const CardList = (props) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.cardContainer}>
+    <div className={classes.cardContainer} id="card-list-container">
       {cards.map(c => (
         <Card card={c} key={c.id} handleDeleteCard={props.handleDeleteCard}  />
       ))}
