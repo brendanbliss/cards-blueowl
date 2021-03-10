@@ -23,11 +23,15 @@ const Card = (props) => {
   const card = props.card;
   const classes = useStyles();
 
+  const handleDeleteClick = (id) => {
+    props.handleDeleteCard(id);
+  }
+
   return (
     <MUCard className={classes.card}>
       <CardHeader 
         action={
-          <IconButton>
+          <IconButton onClick={() => {handleDeleteClick(card.id)}}>
             <CloseIcon />
           </IconButton>
         }

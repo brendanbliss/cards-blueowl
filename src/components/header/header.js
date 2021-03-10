@@ -18,7 +18,7 @@ const Header = (props) => {
 
   return (
     <AppBar
-      position="static" 
+      position="fixed" 
     >
       <Toolbar>
         <Button

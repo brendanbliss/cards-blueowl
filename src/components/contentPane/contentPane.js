@@ -5,18 +5,21 @@ import Footer from '../footer';
 
 const ContentPane = () => {
   const [state, setState] = useState({
-    cards: []
+    cards: [],
+    idSeed: 0
   });
 
   const handleAddCard = () => {
+    const newIdSeed = state.idSeed++;
+
     const newCard = {
-      id: state.cards.length + 1,
+      id: newIdSeed,
       value: Math.floor((Math.random() * 101))
     }
 
     const cards = state.cards.concat(newCard);
 
-    setState({ ...state, cards})
+    setState({ ...state, cards, newIdSeed})
   }
 
   const handleSortCards = () => {
@@ -25,10 +28,16 @@ const ContentPane = () => {
     setState({ ...state, cards})
   }
 
+  const handleDeleteCard = (cardId) => {
+    const cards = state.cards.filter(c => c.id !== cardId);
+
+    setState({ ...state, cards})
+  }
+
   return (
     <div>
-      <Header handleAddCard={handleAddCard} handleSortCards={handleSortCards} />
-      <CardList cards={state.cards} />
+      <Header handleAddCard={handleAddCard} handleSortCards={handleSortCards}/>
+      <CardList cards={state.cards} handleDeleteCard={handleDeleteCard} />
       <Footer />
     </div>
   )
