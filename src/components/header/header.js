@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Header = () => {
+const Header = (props) => {
   const classes = useStyles();
 
   return (
@@ -25,11 +25,13 @@ const Header = () => {
           variant="contained"
           startIcon={<AddIcon />}
           className={classes.headerButton}
+          onClick={props.handleAddCard}
           >Add Card</Button>
         <Button
           variant="contained"
           startIcon={<SortIcon />}
           className={classes.headerButton}
+          onClick={props.handleSortCards}
           >Sort Cards</Button>
       </Toolbar>
     </AppBar>
